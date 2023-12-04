@@ -26,6 +26,7 @@ Route::middleware(['log.api.requests'])->group(function () {
             Route::get('/', [ParcelController::class, 'index']);
             Route::post('/store', [ParcelController::class, 'store']);
             Route::put('/update/{parcel}', [ParcelController::class, 'update']);
+            Route::delete('/delete/{parcel}', [ParcelController::class, 'delete']);
         });
     });
 });

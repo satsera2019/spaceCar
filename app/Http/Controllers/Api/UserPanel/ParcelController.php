@@ -66,4 +66,11 @@ class ParcelController extends Controller
             ]);
         }
     }
+
+    public function delete(Parcel $parcel)
+    {
+        $parcel->delete();
+        
+        return response()->json(['message' => 'Parcel deleted successfully.']);
+    }
 }
