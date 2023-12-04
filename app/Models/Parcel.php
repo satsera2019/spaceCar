@@ -20,4 +20,9 @@ class Parcel extends Model
         'online_address',
         'description',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
