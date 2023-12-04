@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Models\ApiRequestLog;
+use Illuminate\Support\Facades\Session;
 
 class LogApiRequests
 {
@@ -16,7 +17,12 @@ class LogApiRequests
      */
     public function handle(Request $request, Closure $next)
     {
+        $startTime = microtime(true); // Capture the start time
+
         $response = $next($request);
+
+        $endTime = microtime(true); // Capture the end time
+        $duration = $endTime - $startTime; // Calculate the duration
 
         $parameters = $request->all();
 
@@ -27,12 +33,13 @@ class LogApiRequests
 
         // Log request details
         ApiRequestLog::create([
-            'session_id' => $request->ip(),
+            'session_id' => Session::getId(),
             'ip' => $request->ip(),
             'method' => $request->method(),
             'address' => $request->fullUrl(),
             'parameters' => json_encode($parameters),
             'response' => $response->getContent(),
+            'request_time' => $duration,
         ]);
 
         return $response;

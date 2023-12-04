@@ -18,6 +18,7 @@ class ApiRequestLog extends Model
         'address',
         'parameters',
         'response',
+        'request_time',
     ];
 
     protected $casts = [

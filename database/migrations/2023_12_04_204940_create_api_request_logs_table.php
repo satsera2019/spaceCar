@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('address');
             $table->json('parameters')->nullable();
             $table->text('response')->nullable();
+            $table->string('request_time')->useCurrent();
             $table->timestamps();
         });
     }
