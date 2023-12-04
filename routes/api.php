@@ -24,5 +24,6 @@ Route::middleware(['log.api.requests'])->group(function () {
 
     Route::name('parcels.')->prefix('parcels')->group(function () {
         Route::post('/store', [ParcelController::class, 'store']);
+        Route::put('/update/{parcel}', [ParcelController::class, 'update']);
     });
 });
