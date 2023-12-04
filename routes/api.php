@@ -20,10 +20,10 @@ Route::middleware(['log.api.requests'])->group(function () {
     Route::post('/login', [AuthController::class, 'login']);
     Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::post('/logout', [AuthController::class, 'logout']);
-    });
 
-    Route::name('parcels.')->prefix('parcels')->group(function () {
-        Route::post('/store', [ParcelController::class, 'store']);
-        Route::put('/update/{parcel}', [ParcelController::class, 'update']);
+        Route::name('parcels.')->prefix('parcels')->group(function () {
+            Route::post('/store', [ParcelController::class, 'store']);
+            Route::put('/update/{parcel}', [ParcelController::class, 'update']);
+        });
     });
 });
