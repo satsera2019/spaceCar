@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\UserPanel\Auth\AuthController;
+use App\Http\Controllers\Api\UserPanel\ParcelController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,5 +20,9 @@ Route::middleware(['log.api.requests'])->group(function () {
     Route::post('/login', [AuthController::class, 'login']);
     Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::post('/logout', [AuthController::class, 'logout']);
+    });
+
+    Route::name('parcels.')->prefix('parcels')->group(function () {
+        Route::post('/store', [ParcelController::class, 'store']);
     });
 });
