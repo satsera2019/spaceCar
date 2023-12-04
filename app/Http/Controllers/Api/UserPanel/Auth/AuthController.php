@@ -38,7 +38,7 @@ class AuthController extends Controller
             $user = User::create($request->validated());
 
             return response()->json([
-                'message' => 'Login successful.',
+                'message' => 'User registered successfully.',
                 'user' => $user,
             ], 200);
         } catch (\Exception $e) {
