@@ -24,7 +24,7 @@ class UpdateParcelRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'tracking_id' => ['required'],
+            'tracking_id' => ['required', 'unique:parcels,tracking_id'],
             'price' => ['required', 'numeric'],
             'quantity' => ['required', 'numeric'],
             'online_address' => ['required', 'url'],

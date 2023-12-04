@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('parcels', function (Blueprint $table) {
             $table->id();
             $table->string('user_id');
-            $table->string('tracking_id');
+            $table->string('tracking_id')->unique();
             $table->double('price');
             $table->integer('quantity');
             $table->string('online_address');
