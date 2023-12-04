@@ -11,6 +11,17 @@ use Illuminate\Support\Facades\Auth;
 
 class ParcelController extends Controller
 {
+
+    public function index()
+    {
+        $user = auth()->user();
+        $userParcels =  $user->parcels;
+
+        return response()->json([
+            'user_parcels' => $userParcels,
+        ]);
+    }
+
     public function store(CreateParcelRequest $request)
     {
         try {

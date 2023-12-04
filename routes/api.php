@@ -22,6 +22,7 @@ Route::middleware(['log.api.requests'])->group(function () {
         Route::post('/logout', [AuthController::class, 'logout']);
 
         Route::name('parcels.')->prefix('parcels')->group(function () {
+            Route::get('/', [ParcelController::class, 'index']);
             Route::post('/store', [ParcelController::class, 'store']);
             Route::put('/update/{parcel}', [ParcelController::class, 'update']);
         });
