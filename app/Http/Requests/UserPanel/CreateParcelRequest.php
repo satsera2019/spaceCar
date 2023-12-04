@@ -24,9 +24,8 @@ class CreateParcelRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_id' => ['required', 'exists:users,id'],
             'tracking_id' => ['required'],
-            'price' => ['required'],
+            'price' => ['required', 'numeric'],
             'quantity' => ['required', 'numeric'],
             'online_address' => ['required', 'url'],
             'description' => ['nullable', 'string'],

@@ -25,7 +25,7 @@ class UpdateParcelRequest extends FormRequest
     {
         return [
             'tracking_id' => ['required'],
-            'price' => ['required'],
+            'price' => ['required', 'numeric'],
             'quantity' => ['required', 'numeric'],
             'online_address' => ['required', 'url'],
             'description' => ['nullable', 'string'],

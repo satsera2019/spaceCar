@@ -7,6 +7,7 @@ use App\Http\Requests\UserPanel\CreateParcelRequest;
 use App\Http\Requests\UserPanel\UpdateParcelRequest;
 use App\Models\Parcel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ParcelController extends Controller
 {
@@ -14,7 +15,7 @@ class ParcelController extends Controller
     {
         try {
             $parcel = Parcel::create([
-                'user_id' => auth()->id,
+                'user_id' => auth()->user()->id,
                 'tracking_id' => $request->tracking_id,
                 'price' => $request->price,
                 'quantity' => $request->quantity,
